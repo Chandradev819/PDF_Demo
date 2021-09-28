@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WordReader.aspx.cs" Inherits="PDF_Demo.View.WordReader" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PdfReader.aspx.cs" Inherits="PDF_Demo.View.PdfReader" %>
 
 <!DOCTYPE html>
 
@@ -9,9 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-
         </div>
     </form>
 </body>
