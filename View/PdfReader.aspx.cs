@@ -21,7 +21,7 @@ namespace PDF_Demo.View
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
             {
-                string fileName = Server.MapPath(FileUpload1.FileName);
+                //string fileName = Server.MapPath(FileUpload1.FileName);
 
                 _contentList = new List<string>();
                 CreatePdfContent(@"C:\Users\chandradev_ps\Desktop\Chandradev\Demo.pdf");
@@ -39,37 +39,36 @@ namespace PDF_Demo.View
                 int.TryParse(_contentList[indexFarm], out var FarmValue);
 
                 var indexFSAOffice = _contentList.FindIndex(m => m == "5A. County FSA Office Name and Address")+1;
-                string FSAOfficeValue = _contentList[indexFSAOffice];
-                string FSAOfficeValue1= _contentList[indexFSAOffice+1];
-                string FSAOfficeValue2 = _contentList[indexFSAOffice + 2];
+                string FSAOfficeValue1 = _contentList[indexFSAOffice];
+                string FSAOfficeValue2= _contentList[indexFSAOffice+1];
+                string FSAOfficeValue3 = _contentList[indexFSAOffice + 2];
+                string FSAOfficeValue = string.Concat(FSAOfficeValue1, FSAOfficeValue2, FSAOfficeValue3);
 
-
-                var indexCountryOffice1 = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 1;
-                var indexCountryOffice2 = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 2;
-                var indexCountryOffice3 = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 2;
-                int.TryParse(_contentList[indexCountryOffice1], out var CountryOfficeValue1);
-                string name = _contentList[indexCountryOffice1];
-                int.TryParse(_contentList[indexCountryOffice2], out var CountryOfficeValue2);
-                int.TryParse(_contentList[indexCountryOffice3], out var CountryOfficeValue3);
-                //string fulladdress = CountryOfficeValue1 + CountryOfficeValue2 + CountryOfficeValue3;
+                var indexCountryOffice = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 4;
+                string CountryOfficeValue= _contentList[indexCountryOffice];
 
                 var indexCountryFax = _contentList.FindIndex(m => m == "5C. County Office Fax No") + 3;
-                int.TryParse(_contentList[indexCountryFax], out var CountryFaxValue);
+                string CountryFaxValue = _contentList[indexCountryFax];
 
                 var indexMultiYearContract = _contentList.FindIndex(m => m == "6.  Multi-year Contract ") + 1;
-                int.TryParse(_contentList[indexMultiYearContract], out var MultiYearContractValue);
+                string MultiYearContractValue = _contentList[indexMultiYearContract];
 
-                var indexOwnerProducer = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address") + 1;
-                int.TryParse(_contentList[indexOwnerProducer], out var OwnerProducerValue);
+                var indexOwnerProducer1 = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address") + 1;
+                string ownerProducerValue1 = _contentList[indexOwnerProducer1];
+                string ownerProducerValue2 = _contentList[indexOwnerProducer1+1];
+                string ownerProducerValue3 = _contentList[indexOwnerProducer1+2];
+                string ownerProducerValue = string.Concat(ownerProducerValue1, ownerProducerValue2, ownerProducerValue3);
 
                 var indexEmailId = _contentList.FindIndex(m => m == "12B. Email Address") + 1;
-                int.TryParse(_contentList[indexEmailId], out var EmailIdValue);
+                //string emailvalue = _contentList[indexEmailId];
+                string emailvalue = string.Empty;
 
                 var indexTelephoneNum = _contentList.FindIndex(m => m == "12C. Telephone No. ") + 1;
-                int.TryParse(_contentList[indexTelephoneNum], out var TelephoneNumValue);
+                //string telePhoneNum= _contentList[indexTelephoneNum];
+                string telePhoneNum = string.Empty;
 
-               
 
+                //dumping data in excel file
                 Excel.Application xlApp = new Excel.Application();
 
                 if (xlApp == null)
@@ -101,14 +100,14 @@ namespace PDF_Demo.View
                 xlWorkSheet.Cells[2, 3] = CountryValue;
                 xlWorkSheet.Cells[2, 4] = FarmValue;
                 xlWorkSheet.Cells[2, 5] = FSAOfficeValue;
-                xlWorkSheet.Cells[2, 6] = CountryOfficeValue1;
+                xlWorkSheet.Cells[2, 6] = CountryOfficeValue;
                 xlWorkSheet.Cells[2, 7] = CountryFaxValue;
                 xlWorkSheet.Cells[2, 8] = MultiYearContractValue;
-                xlWorkSheet.Cells[2, 9] = OwnerProducerValue;
-                xlWorkSheet.Cells[2, 10] = EmailIdValue;
-                xlWorkSheet.Cells[2, 11] = TelephoneNumValue;
+                xlWorkSheet.Cells[2, 9] = ownerProducerValue;
+                xlWorkSheet.Cells[2, 10] = emailvalue;
+                xlWorkSheet.Cells[2, 11] = telePhoneNum;
 
-                xlWorkBook.SaveAs(@"C:\Users\chandradev_ps\Desktop\Chandradev\Demo.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
 
@@ -116,7 +115,7 @@ namespace PDF_Demo.View
                 Marshal.ReleaseComObject(xlWorkBook);
                 Marshal.ReleaseComObject(xlApp);
 
-                Response.Write("Excel file created , you can find the file G:\\chandradev proj\\PDF_Demo-master\\SampleFile\\Demo.xls");
+                Response.Write("Excel file created in c drive");
             }
             else
             {
