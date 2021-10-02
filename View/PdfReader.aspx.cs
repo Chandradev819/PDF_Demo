@@ -21,12 +21,10 @@ namespace PDF_Demo.View
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
             {
-                //string fileName = Server.MapPath(FileUpload1.FileName);
-
+                string fileName = System.IO.Path.Combine(Server.MapPath("~/Pdf"), FileUpload1.FileName);
+                FileUpload1.SaveAs(fileName);
                 _contentList = new List<string>();
-                //Need to change the file path for testing
-                CreatePdfContent(@"C:\Users\chandradev_ps\Desktop\Chandradev\Demo.pdf");
-
+                CreatePdfContent(fileName);
                 var indexProg = _contentList.FindIndex(m => m == "1. Program Year: ") + 1;
                 int.TryParse(_contentList[indexProg], out var ProgValue);
 
@@ -39,25 +37,26 @@ namespace PDF_Demo.View
                 var indexFarm = _contentList.FindIndex(m => m == "4. Farm Number") + 3;
                 int.TryParse(_contentList[indexFarm], out var FarmValue);
 
-                var indexFSAOffice = _contentList.FindIndex(m => m == "5A. County FSA Office Name and Address")+1;
+                var indexFSAOffice = _contentList.FindIndex(m => m == "5A. County FSA Office Name and Address") + 1;
                 string FSAOfficeValue1 = _contentList[indexFSAOffice];
-                string FSAOfficeValue2= _contentList[indexFSAOffice+1];
+                string FSAOfficeValue2 = _contentList[indexFSAOffice + 1];
                 string FSAOfficeValue3 = _contentList[indexFSAOffice + 2];
                 string FSAOfficeValue = string.Concat(FSAOfficeValue1, FSAOfficeValue2, FSAOfficeValue3);
 
                 var indexCountryOffice = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 4;
-                string CountryOfficeValue= _contentList[indexCountryOffice];
+                string CountryOfficeValue = _contentList[indexCountryOffice];
 
                 var indexCountryFax = _contentList.FindIndex(m => m == "5C. County Office Fax No") + 3;
                 string CountryFaxValue = _contentList[indexCountryFax];
 
-                var indexMultiYearContract = _contentList.FindIndex(m => m == "6.  Multi-year Contract ") + 1;
-                string MultiYearContractValue = _contentList[indexMultiYearContract];
+                var indexMultiYearContract = _contentList.FindIndex(m => m == "6.  Multi-year Contract ");
+                //string MultiYearContractValue = _contentList[indexMultiYearContract];
+                string MultiYearContractValue = string.Empty;
 
                 var indexOwnerProducer1 = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address") + 1;
                 string ownerProducerValue1 = _contentList[indexOwnerProducer1];
-                string ownerProducerValue2 = _contentList[indexOwnerProducer1+1];
-                string ownerProducerValue3 = _contentList[indexOwnerProducer1+2];
+                string ownerProducerValue2 = _contentList[indexOwnerProducer1 + 1];
+                string ownerProducerValue3 = _contentList[indexOwnerProducer1 + 2];
                 string ownerProducerValue = string.Concat(ownerProducerValue1, ownerProducerValue2, ownerProducerValue3);
 
                 var indexEmailId = _contentList.FindIndex(m => m == "12B. Email Address") + 1;
@@ -67,7 +66,6 @@ namespace PDF_Demo.View
                 var indexTelephoneNum = _contentList.FindIndex(m => m == "12C. Telephone No. ") + 1;
                 //string telePhoneNum= _contentList[indexTelephoneNum];
                 string telePhoneNum = string.Empty;
-
 
                 //dumping data in excel file
                 Excel.Application xlApp = new Excel.Application();
@@ -84,7 +82,6 @@ namespace PDF_Demo.View
 
                 xlWorkBook = xlApp.Workbooks.Add(misValue);
                 xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
                 xlWorkSheet.Cells[1, 1] = "1.Program_Year";
                 xlWorkSheet.Cells[1, 2] = "2.State_Code";
                 xlWorkSheet.Cells[1, 3] = "3.Country_Code";
@@ -115,7 +112,6 @@ namespace PDF_Demo.View
                 Marshal.ReleaseComObject(xlWorkSheet);
                 Marshal.ReleaseComObject(xlWorkBook);
                 Marshal.ReleaseComObject(xlApp);
-
                 Response.Write("Excel file created in c drive");
             }
             else
