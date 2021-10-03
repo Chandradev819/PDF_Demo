@@ -67,6 +67,38 @@ namespace PDF_Demo.View
                 //string telePhoneNum= _contentList[indexTelephoneNum];
                 string telePhoneNum = string.Empty;
 
+                //For Comodity
+                var indexComodity = _contentList.FindIndex(m => m == "Commodity");
+                string cornValue = _contentList[indexComodity + 25];
+                string ricelongGrainValue = _contentList[indexComodity + 69];
+                string seedcottonValue = _contentList[indexComodity + 43];
+                string grainsorghumValue = _contentList[indexComodity + 68];
+                string soyabeansValue = _contentList[indexComodity + 71];
+                string wheatValue = _contentList[indexComodity + 74];
+
+                //For Program Elected
+                var indexProgElected = _contentList.FindIndex(m => m == "Elected");
+                string plcValue = _contentList[indexProgElected + 23];
+                string arcCountyValue = _contentList[indexProgElected + 37];
+
+                //Base Acres
+                var indexBaseAcres = _contentList.FindIndex(m => m == "Base Acres");
+                string value_643 = _contentList[indexBaseAcres + 22];
+                string value_336 = _contentList[indexBaseAcres + 32];
+                string value_1052 = _contentList[indexBaseAcres + 40];
+                string value_27 = _contentList[indexBaseAcres + 27];
+                string value_1853 = _contentList[indexBaseAcres + 36];
+                string value_387 = _contentList[indexBaseAcres + 44];
+
+                //PLC Yield
+                var indexPLCYield = _contentList.FindIndex(m => m == "PLC Yield");
+                string value_185 = _contentList[indexPLCYield + 21];
+                string value_6558 = _contentList[indexPLCYield + 31];
+                string value_2626 = _contentList[indexPLCYield + 39];
+                string value_59 = _contentList[indexPLCYield + 26];
+                string value_37 = _contentList[indexPLCYield + 35];
+                string value_40 = _contentList[indexPLCYield + 43];
+
                 //dumping data in excel file
                 Excel.Application xlApp = new Excel.Application();
 
@@ -90,9 +122,15 @@ namespace PDF_Demo.View
                 xlWorkSheet.Cells[1, 6] = "5B.County Office Telephone No";
                 xlWorkSheet.Cells[1, 7] = "5C.County Office Fax No";
                 xlWorkSheet.Cells[1, 8] = "6.Multi-year Contract (2019 - 2023)";
-                xlWorkSheet.Cells[1, 9] = "12A.. Owner or Producer's Name and Address";
-                xlWorkSheet.Cells[1, 10] = "12B. Email Address";
-                xlWorkSheet.Cells[1, 11] = "12C. Telephone No";
+
+                xlWorkSheet.Cells[1, 9] = "7. Comodity";
+                xlWorkSheet.Cells[1, 10] = "8. Program Elected";
+                xlWorkSheet.Cells[1, 11] = "Base Acres";
+                xlWorkSheet.Cells[1, 12] = "PLC Yield";
+
+                xlWorkSheet.Cells[1, 13] = "12A.. Owner or Producer's Name and Address";
+                xlWorkSheet.Cells[1, 14] = "12B. Email Address";
+                xlWorkSheet.Cells[1, 15] = "12C. Telephone No";
                 xlWorkSheet.Cells[2, 1] = ProgValue;
                 xlWorkSheet.Cells[2, 2] = StateValue;
                 xlWorkSheet.Cells[2, 3] = CountryValue;
@@ -101,9 +139,38 @@ namespace PDF_Demo.View
                 xlWorkSheet.Cells[2, 6] = CountryOfficeValue;
                 xlWorkSheet.Cells[2, 7] = CountryFaxValue;
                 xlWorkSheet.Cells[2, 8] = MultiYearContractValue;
-                xlWorkSheet.Cells[2, 9] = ownerProducerValue;
-                xlWorkSheet.Cells[2, 10] = emailvalue;
-                xlWorkSheet.Cells[2, 11] = telePhoneNum;
+                //Comodity value in excel
+                xlWorkSheet.Cells[2, 9] = cornValue;
+                xlWorkSheet.Cells[3, 9] = ricelongGrainValue;
+                xlWorkSheet.Cells[4, 9] = seedcottonValue;
+                xlWorkSheet.Cells[5, 9] = grainsorghumValue;
+                xlWorkSheet.Cells[6, 9] = soyabeansValue;
+                xlWorkSheet.Cells[7, 9] = wheatValue;
+                //Program Elected
+                xlWorkSheet.Cells[2, 10] = plcValue;
+                xlWorkSheet.Cells[3, 10] = plcValue;
+                xlWorkSheet.Cells[4, 10] = plcValue;
+                xlWorkSheet.Cells[5, 10] = plcValue;
+                xlWorkSheet.Cells[6, 10] = arcCountyValue;
+                xlWorkSheet.Cells[7, 10] = plcValue;
+                //Base Acres
+                xlWorkSheet.Cells[2, 11] = value_643;
+                xlWorkSheet.Cells[3, 11] = value_336;
+                xlWorkSheet.Cells[4, 11] = value_1052;
+                xlWorkSheet.Cells[5, 11] = value_27;
+                xlWorkSheet.Cells[6, 11] = value_1853;
+                xlWorkSheet.Cells[7, 11] = value_387;
+                //PLC Yield
+                xlWorkSheet.Cells[2, 12] = value_185;
+                xlWorkSheet.Cells[3, 12] = value_6558;
+                xlWorkSheet.Cells[4, 12] = value_2626;
+                xlWorkSheet.Cells[5, 12] = value_59;
+                xlWorkSheet.Cells[6, 12] = value_37;
+                xlWorkSheet.Cells[7, 12] = value_40;
+
+                xlWorkSheet.Cells[2, 13] = ownerProducerValue;
+                xlWorkSheet.Cells[2, 14] = emailvalue;
+                xlWorkSheet.Cells[2, 15] = telePhoneNum;
 
                 xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);
