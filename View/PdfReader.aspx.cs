@@ -101,6 +101,13 @@ namespace PDF_Demo.View
                     string value_59 = _contentList[indexPLCYield + 26];
                     string value_37 = _contentList[indexPLCYield + 35];
                     string value_40 = _contentList[indexPLCYield + 43];
+                   
+                    var paymentshare = _contentList.FindIndex(m => m == "Payment Share");
+                    string valuepaymentshare_8 = _contentList[paymentshare+ 65];
+                    string valuepaymentshare_100 = _contentList[paymentshare + 67];
+                    string valuepaymentshare_empty = string.Empty;
+                    string valuepaymentshare_15= _contentList[paymentshare + 70];
+                    string valuepaymentshare_90 = _contentList[paymentshare + 74];
 
                     //dumping data in excel file
                     Excel.Application xlApp = new Excel.Application();
@@ -156,6 +163,13 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[1, 33] = "12A.. Owner or Producer's Name and Address";
                     xlWorkSheet.Cells[1, 34] = "12B. Email Address";
                     xlWorkSheet.Cells[1, 35] = "12C. Telephone No";
+
+                    xlWorkSheet.Cells[1, 36] = "P2.14 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 37] = "P2.14.2 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 38] = "P2.14.3 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 39] = "P2.14.4 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 40] = "P2.14.5 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 41] = "P2.14.6 PAYMENT SHARE";
                     //Filling on Cell
 
                     xlWorkSheet.Cells[2, 1] = ProgValue;
@@ -201,6 +215,13 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 33] = ownerProducerValue;
                     xlWorkSheet.Cells[2, 34] = emailvalue;
                     xlWorkSheet.Cells[2, 35] = telePhoneNum;
+
+                    xlWorkSheet.Cells[2, 36] = valuepaymentshare_8;
+                    xlWorkSheet.Cells[2, 37] = valuepaymentshare_empty;
+                    xlWorkSheet.Cells[2, 38] = valuepaymentshare_100;
+                    xlWorkSheet.Cells[2, 39] = valuepaymentshare_100;
+                    xlWorkSheet.Cells[2, 40] = valuepaymentshare_15;
+                    xlWorkSheet.Cells[2, 41] = valuepaymentshare_90;
 
                     xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
