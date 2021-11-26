@@ -86,6 +86,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="View\PdfReader.aspx" />
+    <Content Include="View\Schedule.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +102,19 @@
     <Compile Include="View\PdfReader.aspx.designer.cs">
       <DependentUpon>PdfReader.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="SampleFile\CCC866_3025.pdf" />
-    <Content Include="SampleFile\CCC866_3025.xlsx" />
+    <Content Include="SampleInput\Notes_1030_2021.docx" />
+    <Content Include="SampleInput\Schedule_f.xlsx" />
+    <Content Include="SampleInput\Schedule_F_TestData.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,6 +125,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Pdf\" />
+    <Folder Include="SampleFile\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
