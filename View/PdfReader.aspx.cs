@@ -128,48 +128,106 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[1, 2] = "2.State_Code";
                     xlWorkSheet.Cells[1, 3] = "3.Country_Code";
                     xlWorkSheet.Cells[1, 4] = "4.Fram_Number";
-                    xlWorkSheet.Cells[1, 5] = "5A.County FSA Office Name and Addres";
-                    xlWorkSheet.Cells[1, 6] = "5B.County Office Telephone No";
-                    xlWorkSheet.Cells[1, 7] = "5C.County Office Fax No";
-                    xlWorkSheet.Cells[1, 8] = "6.Multi-year Contract (2019 - 2023)";
+                    xlWorkSheet.Cells[1, 5] = "5A.County_FSA_Office_Name_and_Address";
+                    xlWorkSheet.Cells[1, 6] = "5B.County_Office_Telephone_No";
+                    xlWorkSheet.Cells[1, 7] = "5C.County_Office_Fax_No";
+                    xlWorkSheet.Cells[1, 8] = "6.Multi-year_Contract_(2019-2023)";
 
-                    xlWorkSheet.Cells[1, 9] = "7. Comodity";
-                    xlWorkSheet.Cells[1, 10] = "7.2 Comodity";
-                    xlWorkSheet.Cells[1, 11] = "7.3 Comodity";
-                    xlWorkSheet.Cells[1, 12] = "7.4 Comodity";
-                    xlWorkSheet.Cells[1, 13] = "7.5 Comodity";
-                    xlWorkSheet.Cells[1, 14] = "7.6 Comodity";
-                    xlWorkSheet.Cells[1, 15] = "8. Program Elected";
-                    xlWorkSheet.Cells[1, 16] = "8.2 Program Elected";
-                    xlWorkSheet.Cells[1, 17] = "8.3 Program Elected";
-                    xlWorkSheet.Cells[1, 18] = "8.4 Program Elected";
-                    xlWorkSheet.Cells[1, 19] = "8.5 Program Elected";
-                    xlWorkSheet.Cells[1, 20] = "8.6 Program Elected";
+                    xlWorkSheet.Cells[1, 9] = "7.Comodity";
+                    xlWorkSheet.Cells[1, 10] = "7.2Comodity";
+                    xlWorkSheet.Cells[1, 11] = "7.3Comodity";
+                    xlWorkSheet.Cells[1, 12] = "7.4Comodity";
+                    xlWorkSheet.Cells[1, 13] = "7.5Comodity";
+                    xlWorkSheet.Cells[1, 14] = "7.6Comodity";
+                    xlWorkSheet.Cells[1, 15] = "8.Program_Elected";
+                    xlWorkSheet.Cells[1, 16] = "8.2Program_Elected";
+                    xlWorkSheet.Cells[1, 17] = "8.3Program_Elected";
+                    xlWorkSheet.Cells[1, 18] = "8.4Program_Elected";
+                    xlWorkSheet.Cells[1, 19] = "8.5Program_Elected";
+                    xlWorkSheet.Cells[1, 20] = "8.6Program_Elected";
 
-                    xlWorkSheet.Cells[1, 21] = "9. Base Acres";
-                    xlWorkSheet.Cells[1, 22] = "9.2 Base Acres";
-                    xlWorkSheet.Cells[1, 23] = "9.3 Base Acres";
-                    xlWorkSheet.Cells[1, 24] = "9.4 Base Acres";
-                    xlWorkSheet.Cells[1, 25] = "9.5 Base Acres";
-                    xlWorkSheet.Cells[1, 26] = "9.6 Base Acres";
+                    xlWorkSheet.Cells[1, 21] = "9.Base_Acres";
+                    xlWorkSheet.Cells[1, 22] = "9.2Base_Acres";
+                    xlWorkSheet.Cells[1, 23] = "9.3Base_Acres";
+                    xlWorkSheet.Cells[1, 24] = "9.4Base_Acres";
+                    xlWorkSheet.Cells[1, 25] = "9.5Base_Acres";
+                    xlWorkSheet.Cells[1, 26] = "9.6Base_Acres";
 
-                    xlWorkSheet.Cells[1, 27] = "10. PLC Yield";
-                    xlWorkSheet.Cells[1, 28] = "10.2 PLC Yield";
-                    xlWorkSheet.Cells[1, 29] = "10.3 PLC Yield";
-                    xlWorkSheet.Cells[1, 30] = "10.4 PLC Yield";
-                    xlWorkSheet.Cells[1, 31] = "10.5 PLC Yield";
-                    xlWorkSheet.Cells[1, 32] = "10.6 PLC Yield";
+                    xlWorkSheet.Cells[1, 27] = "10.PLC_Yield";
+                    xlWorkSheet.Cells[1, 28] = "10.2PLC_Yield";
+                    xlWorkSheet.Cells[1, 29] = "10.3PLC_Yield";
+                    xlWorkSheet.Cells[1, 30] = "10.4PLC_Yield";
+                    xlWorkSheet.Cells[1, 31] = "10.5PLC_Yield";
+                    xlWorkSheet.Cells[1, 32] = "10.6PLC_Yield";
 
-                    xlWorkSheet.Cells[1, 33] = "12A.. Owner or Producer's Name and Address";
-                    xlWorkSheet.Cells[1, 34] = "12B. Email Address";
-                    xlWorkSheet.Cells[1, 35] = "12C. Telephone No";
+                    xlWorkSheet.Cells[1, 33] = "11.Participating";
+                    xlWorkSheet.Cells[1, 34] = "11.2Participating";
+                    xlWorkSheet.Cells[1, 35] = "11.3Participating";
+                    xlWorkSheet.Cells[1, 36] = "11.4Participating";
+                    xlWorkSheet.Cells[1, 37] = "11.5Participating";
+                    xlWorkSheet.Cells[1, 38] = "11.6Participating";
 
-                    xlWorkSheet.Cells[1, 36] = "P2.14 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 37] = "P2.14.2 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 38] = "P2.14.3 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 39] = "P2.14.4 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 40] = "P2.14.5 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 41] = "P2.14.6 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 39] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 40] = "12B.Email_Address";
+                    xlWorkSheet.Cells[1, 41] = "12C.Telephone_No";
+
+                    xlWorkSheet.Cells[1, 42] = "13.Commodity";
+                    xlWorkSheet.Cells[1, 43] = "13.2Commodity";
+                    xlWorkSheet.Cells[1, 44] = "13.3Commodity";
+                    xlWorkSheet.Cells[1, 45] = "13.4Commodity";
+                    xlWorkSheet.Cells[1, 46] = "13.5Commodity";
+                    xlWorkSheet.Cells[1, 47] = "13.6Commodity";
+                    xlWorkSheet.Cells[1, 48] = "13.7Commodity";
+                    xlWorkSheet.Cells[1, 49] = "13.8Commodity";
+
+                    xlWorkSheet.Cells[1, 50] = "14.Payment_Share";
+                    xlWorkSheet.Cells[1, 51] = "14.2Payment_Share";
+                    xlWorkSheet.Cells[1, 52] = "14.3Payment_Share";
+                    xlWorkSheet.Cells[1, 53] = "14.4Payment_Share";
+                    xlWorkSheet.Cells[1, 54] = "14.5Payment_Share";
+                    xlWorkSheet.Cells[1, 55] = "14.6Payment_Share";
+                    xlWorkSheet.Cells[1, 56] = "14.7Payment_Share";
+                    xlWorkSheet.Cells[1, 57] = "14.8Payment_Share";
+
+                    xlWorkSheet.Cells[1, 58] = "P2.1.Program_Year";
+                    xlWorkSheet.Cells[1, 59] = "P2.2.State_Code";
+                    xlWorkSheet.Cells[1, 60] = "P2.3._County_Code";
+                    xlWorkSheet.Cells[1, 61] = "P2.4.Farm_Number";
+
+                    xlWorkSheet.Cells[1, 62] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 63] = "P2.12B.Email_Address";
+                    xlWorkSheet.Cells[1, 64] = "P2.12C._Telephone_No";
+
+                    xlWorkSheet.Cells[1, 65] = "P2.13.Commodity";
+                    xlWorkSheet.Cells[1, 66] = "P2.13.2Commodity";
+                    xlWorkSheet.Cells[1, 67] = "P2.13.3Commodity";
+                    xlWorkSheet.Cells[1, 68] = "P2.13.4Commodity";
+                    xlWorkSheet.Cells[1, 69] = "P2.13.5Commodity";
+                    xlWorkSheet.Cells[1, 70] = "P2.13.6Commodity";
+                    xlWorkSheet.Cells[1, 71] = "P2.13.7Commodity";
+                    xlWorkSheet.Cells[1, 72] = "P2.13.8Commodity";
+
+                    xlWorkSheet.Cells[1, 73] = "P2.14.Payment_Share";
+                    xlWorkSheet.Cells[1, 74] = "P2.14.2Payment_Share";
+                    xlWorkSheet.Cells[1, 75] = "P2.14.3Payment_Share";
+                    xlWorkSheet.Cells[1, 76] = "P2.14.4Payment_Share";
+                    xlWorkSheet.Cells[1, 77] = "P2.14.5Payment_Share";
+                    xlWorkSheet.Cells[1, 78] = "P2.14.6Payment_Share";
+
+                    xlWorkSheet.Cells[1, 79] = "P2.14.7Payment_Share";
+                    xlWorkSheet.Cells[1, 80] = "P2.14.8Payment_Share";
+                    xlWorkSheet.Cells[1, 81] = "P2.15A.Refused_Payment_Information";
+                    xlWorkSheet.Cells[1, 82] = "P2.15B.Producer's_Initials";
+                    xlWorkSheet.Cells[1, 83] = "P2.15C.Date_Initialed_MM-DD-YYYY";
+                    xlWorkSheet.Cells[1, 84] = "P2.16A.Producer's_Signature_By";
+                    xlWorkSheet.Cells[1, 85] = "P2.16B.Title/Relationship_of_the_Individual_Signing_in_the_Representative_Capacity";
+                    xlWorkSheet.Cells[1, 86] = "P2.16C.Date_MM-DD-YYYY";
+                    xlWorkSheet.Cells[1, 87] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 88] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 89] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 90] = "12A.Owner_or_Producer's_Name_and_Address";
+                    xlWorkSheet.Cells[1, 91] = "12A.Owner_or_Producer's_Name_and_Address";
+
                     //Filling on Cell
 
                     xlWorkSheet.Cells[2, 1] = ProgValue;
@@ -196,6 +254,7 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 18] = plcValue;
                     xlWorkSheet.Cells[2, 19] = arcCountyValue;
                     xlWorkSheet.Cells[2, 20] = plcValue;
+
                     //Base Acres
                     xlWorkSheet.Cells[2, 21] = value_643;
                     xlWorkSheet.Cells[2, 22] = value_336;
