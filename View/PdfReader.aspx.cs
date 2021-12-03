@@ -81,7 +81,14 @@ namespace PDF_Demo.View
 
                     //For Program Elected
                     var indexProgElected = _contentList.FindIndex(m => m == "Elected");
-                    string plcValue = _contentList[indexProgElected + 23];
+
+                    //Need to correct the value
+                    string plcValue1 = _contentList[indexProgElected + 23];
+                    string plcValue2 = _contentList[indexProgElected + 33];
+                    string plcValue3 = _contentList[indexProgElected + 41];
+                    string plcValue4 = _contentList[indexProgElected + 28];
+                    string plcValue5 = _contentList[indexProgElected + 45];
+
                     string arcCountyValue = _contentList[indexProgElected + 37];
 
                     //Base Acres
@@ -101,13 +108,80 @@ namespace PDF_Demo.View
                     string value_59 = _contentList[indexPLCYield + 26];
                     string value_37 = _contentList[indexPLCYield + 35];
                     string value_40 = _contentList[indexPLCYield + 43];
-                   
-                    var paymentshare = _contentList.FindIndex(m => m == "Payment Share");
-                    string valuepaymentshare_8 = _contentList[paymentshare+ 65];
-                    string valuepaymentshare_100 = _contentList[paymentshare + 67];
-                    string valuepaymentshare_empty = string.Empty;
-                    string valuepaymentshare_15= _contentList[paymentshare + 70];
-                    string valuepaymentshare_90 = _contentList[paymentshare + 74];
+
+                    
+                    string participating = string.Empty;
+
+                    //12A. Owner or Producer's Name and Address
+                    var indexOwner = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address");
+                    string owner_producerName_Address1 = _contentList[indexOwner + 1];
+                    string owner_producerName_Address2 = _contentList[indexOwner + 2];
+                    string owner_producerName_Address3 = _contentList[indexOwner + 3];
+
+                    string owner_producerName_Address = string.Concat(owner_producerName_Address1 + owner_producerName_Address2 + owner_producerName_Address3);
+
+                    string email_Address = string.Empty;
+
+                    string telephone_no = string.Empty;
+
+                    //var indexCommodity = _contentList.FindIndex(m => m == "Commodity");
+                    string commodity_13 = _contentList[188];
+                    string commodity_13_2 = _contentList[192];
+                    string commodity_13_3 = _contentList[195];
+                    string commodity_13_4 = string.Empty;
+                    string commodity_13_5 = _contentList[190];
+                    string commodity_13_6 = _contentList[193];
+                    string commodity_13_7 = _contentList[197];
+                    string commodity_13_8 = string.Empty;
+
+                    //For Payment Share
+                    var indexPaymentShare = _contentList.FindIndex(m => m == "Payment Share");
+                    string paymentshare_14 = _contentList[indexPaymentShare + 6];
+                    string paymentshare_14_2 = _contentList[indexPaymentShare + 72];
+                    string paymentshare_14_3 = string.Empty;
+                    string paymentshare_14_4 = string.Empty;
+                    string paymentshare_14_5 = string.Empty;
+                    string paymentshare_14_6 = _contentList[indexPaymentShare + 11];
+                    string paymentshare_14_7 = _contentList[indexPaymentShare + 14];
+                    string paymentshare_14_8 = string.Empty;
+
+                    //12A. Owner or Producer's Name and Address
+                    var indexOwnerProducer = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address");
+                    string address1 = _contentList[indexOwnerProducer + 1];
+                    string address2 = _contentList[indexOwnerProducer + 2];
+                    string address3 = _contentList[indexOwnerProducer + 3];
+                    string owner_producer_name_address = string.Concat(address1, address2, address3); 
+                    
+                    string emailAddress = string.Empty;
+                    //telephone
+                    var indexTelephone = _contentList.FindIndex(m => m == "12C. Telephone No.");
+                    string telephoneNum = _contentList[indexTelephone + 62];
+
+                    //var indexcommudity = _contentList.FindIndex(m => m == "Commodity");
+                    string commudity_13 = _contentList[188];
+                    string commudity_13_2 = _contentList[192];
+                    string commudity_13_3 = _contentList[195];
+                    string commudity_13_4 = string.Empty;
+                    string commudity_13_5 = _contentList[190];
+                    string commudity_13_6 = _contentList[193];
+                    string commudity_13_7 = _contentList[197];
+                    string commudity_13_8 = string.Empty;
+
+                    string paymentshare_P2_14 = _contentList[189];
+                    string paymentshare_P2_14_2 = string.Empty;
+                    string paymentshare_P2_14_3 = _contentList[196];
+                    string paymentshare_P2_14_4 = string.Empty;
+                    string paymentshare_P2_14_5 = _contentList[191];
+                    string paymentshare_P2_14_6 = _contentList[194];
+                    string paymentshare_P2_14_7 = _contentList[198];
+                    string paymentshare_P2_14_8 = string.Empty;
+
+                    string refused_Payment_Information = string.Concat(_contentList[201], _contentList[202]);
+                    string Producer_Initials = string.Empty;
+                    string date_Initialed_MM_DD_yyyy = string.Empty;
+                    string Producer_Signature_By = string.Empty;
+                    string Relationship_of_the_Individual_Signing_in_the_Representative_Capacity = string.Empty;
+                    string Date_MM_DD_YYYY = string.Empty;
 
                     //dumping data in excel file
                     Excel.Application xlApp = new Excel.Application();
@@ -222,11 +296,6 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[1, 84] = "P2.16A.Producer's_Signature_By";
                     xlWorkSheet.Cells[1, 85] = "P2.16B.Title/Relationship_of_the_Individual_Signing_in_the_Representative_Capacity";
                     xlWorkSheet.Cells[1, 86] = "P2.16C.Date_MM-DD-YYYY";
-                    xlWorkSheet.Cells[1, 87] = "12A.Owner_or_Producer's_Name_and_Address";
-                    xlWorkSheet.Cells[1, 88] = "12A.Owner_or_Producer's_Name_and_Address";
-                    xlWorkSheet.Cells[1, 89] = "12A.Owner_or_Producer's_Name_and_Address";
-                    xlWorkSheet.Cells[1, 90] = "12A.Owner_or_Producer's_Name_and_Address";
-                    xlWorkSheet.Cells[1, 91] = "12A.Owner_or_Producer's_Name_and_Address";
 
                     //Filling on Cell
 
@@ -239,6 +308,7 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 7] = CountryFaxValue;
                     xlWorkSheet.Cells[2, 8] = MultiYearContractValue;
 
+
                     //Comodity value in excel
                     xlWorkSheet.Cells[2, 9] = cornValue;
                     xlWorkSheet.Cells[2, 10] = ricelongGrainValue;
@@ -248,12 +318,12 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 14] = wheatValue;
 
                     //Program Elected
-                    xlWorkSheet.Cells[2, 15] = plcValue;
-                    xlWorkSheet.Cells[2, 16] = plcValue;
-                    xlWorkSheet.Cells[2, 17] = plcValue;
-                    xlWorkSheet.Cells[2, 18] = plcValue;
+                    xlWorkSheet.Cells[2, 15] = plcValue1;
+                    xlWorkSheet.Cells[2, 16] = plcValue2;
+                    xlWorkSheet.Cells[2, 17] = plcValue3;
+                    xlWorkSheet.Cells[2, 18] = plcValue4;
                     xlWorkSheet.Cells[2, 19] = arcCountyValue;
-                    xlWorkSheet.Cells[2, 20] = plcValue;
+                    xlWorkSheet.Cells[2, 20] = plcValue5;
 
                     //Base Acres
                     xlWorkSheet.Cells[2, 21] = value_643;
@@ -271,16 +341,69 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 31] = value_37;
                     xlWorkSheet.Cells[2, 32] = value_40;
 
-                    xlWorkSheet.Cells[2, 33] = ownerProducerValue;
-                    xlWorkSheet.Cells[2, 34] = emailvalue;
-                    xlWorkSheet.Cells[2, 35] = telePhoneNum;
+                    xlWorkSheet.Cells[2, 33] = participating;
+                    xlWorkSheet.Cells[2, 34] = participating;
+                    xlWorkSheet.Cells[2, 35] = participating;
+                    xlWorkSheet.Cells[2, 36] = participating;
+                    xlWorkSheet.Cells[2, 37] = participating;
+                    xlWorkSheet.Cells[2, 38] = participating;
 
-                    xlWorkSheet.Cells[2, 36] = valuepaymentshare_8;
-                    xlWorkSheet.Cells[2, 37] = valuepaymentshare_empty;
-                    xlWorkSheet.Cells[2, 38] = valuepaymentshare_100;
-                    xlWorkSheet.Cells[2, 39] = valuepaymentshare_100;
-                    xlWorkSheet.Cells[2, 40] = valuepaymentshare_15;
-                    xlWorkSheet.Cells[2, 41] = valuepaymentshare_90;
+                    //To be fill
+                    xlWorkSheet.Cells[2, 39] = owner_producerName_Address;
+                    xlWorkSheet.Cells[2, 40] = email_Address;
+                    xlWorkSheet.Cells[2, 41] = telephone_no;
+
+                    xlWorkSheet.Cells[2, 42] = commodity_13;
+                    xlWorkSheet.Cells[2, 43] = commodity_13_2;
+                    xlWorkSheet.Cells[2, 44] = commodity_13_3;
+                    xlWorkSheet.Cells[2, 45] = commodity_13_4;
+                    xlWorkSheet.Cells[2, 46] = commodity_13_5;
+                    xlWorkSheet.Cells[2, 47] = commodity_13_6;
+                    xlWorkSheet.Cells[2, 48] = commodity_13_7;
+                    xlWorkSheet.Cells[2, 49] = commodity_13_8;
+
+                    xlWorkSheet.Cells[2, 50] = paymentshare_14;
+                    xlWorkSheet.Cells[2, 51] = paymentshare_14_2;
+                    xlWorkSheet.Cells[2, 52] = paymentshare_14_3;
+                    xlWorkSheet.Cells[2, 53] = paymentshare_14_4;
+                    xlWorkSheet.Cells[2, 54] = paymentshare_14_5;
+                    xlWorkSheet.Cells[2, 55] = paymentshare_14_6;
+                    xlWorkSheet.Cells[2, 56] = paymentshare_14_7;
+                    xlWorkSheet.Cells[2, 57] = paymentshare_14_8;
+
+                    xlWorkSheet.Cells[2, 58] = ProgValue;
+                    xlWorkSheet.Cells[2, 59] = StateValue;
+                    xlWorkSheet.Cells[2, 60] = CountryValue;
+                    xlWorkSheet.Cells[2, 61] = FarmValue;
+
+                    xlWorkSheet.Cells[2, 62] = owner_producer_name_address;
+                    xlWorkSheet.Cells[2, 63] = emailAddress; 
+                    xlWorkSheet.Cells[2, 64] = telePhoneNum;
+
+                    xlWorkSheet.Cells[2, 65] = commodity_13;
+                    xlWorkSheet.Cells[2, 66] = commodity_13_2; 
+                    xlWorkSheet.Cells[2, 67] = commodity_13_3; 
+                    xlWorkSheet.Cells[2, 68] = commodity_13_4; 
+                    xlWorkSheet.Cells[2, 69] = commodity_13_5; 
+                    xlWorkSheet.Cells[2, 70] = commodity_13_6; 
+                    xlWorkSheet.Cells[2, 71] = commodity_13_7; 
+                    xlWorkSheet.Cells[2, 72] = commodity_13_8;
+
+                    xlWorkSheet.Cells[2, 73] = paymentshare_14;
+                    xlWorkSheet.Cells[2, 74] = paymentshare_14_2;
+                    xlWorkSheet.Cells[2, 75] = paymentshare_14_3;
+                    xlWorkSheet.Cells[2, 76] = paymentshare_14_4;
+                    xlWorkSheet.Cells[2, 77] = paymentshare_14_5;
+                    xlWorkSheet.Cells[2, 78] = paymentshare_14_6;
+
+                    xlWorkSheet.Cells[2, 79] = paymentshare_14_7;
+                    xlWorkSheet.Cells[2, 80] = paymentshare_14_8;
+                    xlWorkSheet.Cells[2, 81] = refused_Payment_Information;
+                    xlWorkSheet.Cells[2, 82] = Producer_Initials;
+                    xlWorkSheet.Cells[2, 83] = date_Initialed_MM_DD_yyyy;
+                    xlWorkSheet.Cells[2, 84] = Producer_Signature_By;
+                    xlWorkSheet.Cells[2, 85] = Relationship_of_the_Individual_Signing_in_the_Representative_Capacity;
+                    xlWorkSheet.Cells[2, 86] = Date_MM_DD_YYYY;
 
                     xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
