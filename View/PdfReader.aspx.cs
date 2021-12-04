@@ -147,36 +147,38 @@ namespace PDF_Demo.View
 
                     //12A. Owner or Producer's Name and Address
                     var indexOwnerProducer = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address");
-                    string address1 = _contentList[indexOwnerProducer + 1];
-                    string address2 = _contentList[indexOwnerProducer + 2];
-                    string address3 = _contentList[indexOwnerProducer + 3];
+                    string address1 = _contentList[indexOwnerProducer + 59];
+                    string address2 = _contentList[indexOwnerProducer + 60];
+                    string address3 = _contentList[indexOwnerProducer + 61];
                     string owner_producer_name_address = string.Concat(address1, address2, address3); 
                     
                     string emailAddress = string.Empty;
                     //telephone
-                    var indexTelephone = _contentList.FindIndex(m => m == "12C. Telephone No.");
-                    string telephoneNum = _contentList[indexTelephone + 62];
+                    var indexTelephone = _contentList.FindIndex(m => m == "12C. Telephone No. ");
+                    string telephoneNum = _contentList[indexTelephone + 60];
 
-                    //var indexcommudity = _contentList.FindIndex(m => m == "Commodity");
-                    string commudity_13 = _contentList[188];
-                    string commudity_13_2 = _contentList[192];
-                    string commudity_13_3 = _contentList[195];
+                    var indexcommudity = _contentList.FindIndex(m => m == "Commodity");
+                    string commudity_13 = _contentList[indexcommudity + 125]; 
+                    string commudity_13_2 = _contentList[indexcommudity + 129]; 
+                    string commudity_13_3 = _contentList[indexcommudity + 132]; 
                     string commudity_13_4 = string.Empty;
-                    string commudity_13_5 = _contentList[190];
-                    string commudity_13_6 = _contentList[193];
-                    string commudity_13_7 = _contentList[197];
+                    string commudity_13_5 = _contentList[indexcommudity + 127]; 
+                    string commudity_13_6 = _contentList[indexcommudity + 130]; 
+                    string commudity_13_7 = _contentList[indexcommudity + 134]; 
                     string commudity_13_8 = string.Empty;
 
-                    string paymentshare_P2_14 = _contentList[189];
+                    var indexpaymenetshare = _contentList.FindIndex(m => m == "Payment Share");
+                    string paymentshare_P2_14 = _contentList[indexpaymenetshare + 65]; 
                     string paymentshare_P2_14_2 = string.Empty;
-                    string paymentshare_P2_14_3 = _contentList[196];
+                    string paymentshare_P2_14_3 = _contentList[indexpaymenetshare + 72]; 
                     string paymentshare_P2_14_4 = string.Empty;
-                    string paymentshare_P2_14_5 = _contentList[191];
-                    string paymentshare_P2_14_6 = _contentList[194];
-                    string paymentshare_P2_14_7 = _contentList[198];
+                    string paymentshare_P2_14_5 = _contentList[indexpaymenetshare + 67]; 
+                    string paymentshare_P2_14_6 = _contentList[indexpaymenetshare + 70]; 
+                    string paymentshare_P2_14_7 = _contentList[indexpaymenetshare + 74];
                     string paymentshare_P2_14_8 = string.Empty;
-
-                    string refused_Payment_Information = string.Concat(_contentList[201], _contentList[202]);
+                    //15A. Refused Payment Information:
+                    var indexRefusedPayment = _contentList.FindIndex(m => m == "15A. Refused Payment Information:");
+                    string refused_Payment_Information = string.Concat(_contentList[indexRefusedPayment + 62]," " + _contentList[indexRefusedPayment + 63]);
                     string Producer_Initials = string.Empty;
                     string date_Initialed_MM_DD_yyyy = string.Empty;
                     string Producer_Signature_By = string.Empty;
@@ -287,9 +289,9 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[1, 76] = "P2.14.4Payment_Share";
                     xlWorkSheet.Cells[1, 77] = "P2.14.5Payment_Share";
                     xlWorkSheet.Cells[1, 78] = "P2.14.6Payment_Share";
-
                     xlWorkSheet.Cells[1, 79] = "P2.14.7Payment_Share";
                     xlWorkSheet.Cells[1, 80] = "P2.14.8Payment_Share";
+
                     xlWorkSheet.Cells[1, 81] = "P2.15A.Refused_Payment_Information";
                     xlWorkSheet.Cells[1, 82] = "P2.15B.Producer's_Initials";
                     xlWorkSheet.Cells[1, 83] = "P2.15C.Date_Initialed_MM-DD-YYYY";
@@ -389,15 +391,15 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 71] = commodity_13_7; 
                     xlWorkSheet.Cells[2, 72] = commodity_13_8;
 
-                    xlWorkSheet.Cells[2, 73] = paymentshare_14;
-                    xlWorkSheet.Cells[2, 74] = paymentshare_14_2;
-                    xlWorkSheet.Cells[2, 75] = paymentshare_14_3;
-                    xlWorkSheet.Cells[2, 76] = paymentshare_14_4;
-                    xlWorkSheet.Cells[2, 77] = paymentshare_14_5;
-                    xlWorkSheet.Cells[2, 78] = paymentshare_14_6;
+                    xlWorkSheet.Cells[2, 73] = paymentshare_P2_14;
+                    xlWorkSheet.Cells[2, 74] = paymentshare_P2_14_2;
+                    xlWorkSheet.Cells[2, 75] = paymentshare_P2_14_3;
+                    xlWorkSheet.Cells[2, 76] = paymentshare_P2_14_4;
+                    xlWorkSheet.Cells[2, 77] = paymentshare_P2_14_5;
+                    xlWorkSheet.Cells[2, 78] = paymentshare_P2_14_6;
+                    xlWorkSheet.Cells[2, 79] = paymentshare_P2_14_7;
+                    xlWorkSheet.Cells[2, 80] = paymentshare_P2_14_8;
 
-                    xlWorkSheet.Cells[2, 79] = paymentshare_14_7;
-                    xlWorkSheet.Cells[2, 80] = paymentshare_14_8;
                     xlWorkSheet.Cells[2, 81] = refused_Payment_Information;
                     xlWorkSheet.Cells[2, 82] = Producer_Initials;
                     xlWorkSheet.Cells[2, 83] = date_Initialed_MM_DD_yyyy;
