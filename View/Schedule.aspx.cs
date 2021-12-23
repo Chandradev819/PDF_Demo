@@ -17,8 +17,10 @@ namespace PDF_Demo.View
         {
 
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string blank = "";
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
             {
@@ -29,90 +31,91 @@ namespace PDF_Demo.View
                     FileUpload1.SaveAs(fileName);
                     _contentList = new List<string>();
                     CreatePdfContent(fileName);
-                    //For Propritetor
+                    var proprietor = _contentList.FindIndex(m => m == "Name of proprietor") + 210;
+                    string proprietorName = _contentList[proprietor];
 
-                    var indexPropri = _contentList.FindIndex(m => m == "Name of proprietor") + 1;
+                    var sSN = _contentList.FindIndex(m => m == "number (SSN)");
+                    string _ssN1 = _contentList[sSN + 1];
+                    string _ssN2 = _contentList[sSN + 2];
+                    string _ssN3 = _contentList[sSN + 3];
+                    string _ssN4 = _contentList[sSN + 4];
+                    string _ssN5 = _contentList[sSN + 5];
+                    string _ssN = string.Concat(_ssN1 + _ssN2 + _ssN3 + _ssN4 + _ssN5);
 
-                    //var indexProg = _contentList.FindIndex(m => m == "Test");
-                    ////int.TryParse(_contentList[indexProg], out var ProgValue);
+                    var Principal_Crop = _contentList.FindIndex(m => m == "Principal crop or activity") + 220;
+                    string PrincipalCrop = _contentList[Principal_Crop];
 
-                    //var indexState = _contentList.FindIndex(m => m == "2. State Code") + 3;
-                    //int.TryParse(_contentList[indexState], out var StateValue);
+                    var Code_from_PartIV = _contentList.FindIndex(m => m == "Code_from_PartIV") + 3;
+                    string CodefromPartIV = _contentList[Principal_Crop + 1];
+                    var Acconting_Method = _contentList.FindIndex(m => m == "Accounting method:");
+                    string AccontingMethod = _contentList[Principal_Crop + 2];
+                    var EIN = _contentList.FindIndex(m => m == "Employer ID number (EIN) ") + 3;
+                    string _EIN = _contentList[Principal_Crop + 3];
+                    var a1 = _contentList.FindIndex(m => m == "1a");
 
-                    //var indexCountry = _contentList.FindIndex(m => m == "3. County Code") + 3;
-                    //int.TryParse(_contentList[indexCountry], out var CountryValue);
+                    string E = _contentList[Principal_Crop + 3];
+                    string F = _contentList[Principal_Crop + 4];
+                    string G = _contentList[Principal_Crop + 5];
+                    //string OneA = _contentList[a1+0];
+                    //string OneB = _contentList[a1+0];
+                    //string OneC = _contentList[a1+0];
+                    string OneA = blank;
+                    string OneB = blank;
+                    string OneC = blank;
+                    string two = _contentList[Principal_Crop + 6];
+                    string threeA = _contentList[Principal_Crop + 7];
+                    string threeB = _contentList[Principal_Crop + 8];
+                    string fourA = _contentList[Principal_Crop + 9];
+                    string fourB = _contentList[Principal_Crop + 10];
+                    var fiveIndex = _contentList.FindIndex(m => m == "5a");
+                    string fiveA = blank;//_contentList[fiveIndex + 0];
+                    string fiveB = blank;//_contentList[fiveIndex + 0];
+                    string fiveC = blank;//_contentList[fiveIndex + 0];
+                    var sixIndex = _contentList.FindIndex(m => m == "6a");
+                    string sixA = _contentList[sixIndex + 55];
+                    string sixB = _contentList[sixIndex + 56];
+                    string sixC = blank;// _contentList[sixIndex+0];
+                    string sixD = blank;// _contentList[sixIndex+0];
+                    string seven = blank;// _contentList[sixIndex+0];
+                    string eight = _contentList[sixIndex + 58];
+                    string nine = _contentList[sixIndex + 59];
+                    string ten = _contentList[sixIndex];
+                    string eleven = _contentList[sixIndex + 60];
+                    string twelve = blank; // _contentList[a1+0]; 
+                    string thirteen = _contentList[sixIndex + 61];
+                    string fourteen = _contentList[sixIndex + 62];
+                    string fiveteen = blank; //_contentList[a1+0];
+                    string sixteen = blank;// _contentList[a1+0];
+                    string seventeen = blank;// _contentList[sixIndex + 63];
+                    string eighteen = _contentList[sixIndex + 64];
+                    string ninteen = _contentList[sixIndex + 65];
+                    string twenty = _contentList[sixIndex + 66];
+                    var twentyOneAIndex = _contentList.FindIndex(m => m == "21a");
+                    string twentyOneA = blank;// _contentList[a1+0];
+                    string twentyOneB = _contentList[twentyOneAIndex + 122];
+                    string twentyTwo = blank;//_contentList[a1+0];
+                    string twentyThree = blank;//_contentList[a1+0];
+                    var twentyFourAIndex = _contentList.FindIndex(m => m == "24a");
+                    string twentyFourA = blank;//_contentList[a1+0];
+                    string twentyFourB = _contentList[twentyFourAIndex + 87];
+                    string twentyFive = _contentList[twentyFourAIndex + 88];
+                    string twentySix = _contentList[twentyFourAIndex + 89];
+                    string twentySeven = blank;// _contentList[a1+0];
+                    string twentyEight = _contentList[twentyFourAIndex + 90];
+                    string twentyNine = _contentList[twentyFourAIndex + 91];
+                    var thirtyIndex = _contentList.FindIndex(m => m == "30");
+                    string thirty = _contentList[twentyFourAIndex + 92];
+                    string thirtyOne = blank;//_contentList[a1+0] ;
+                    var thirtyTwoAIndex = _contentList.FindIndex(m => m == "32a");
+                    string thirtyTwoA = _contentList[thirtyTwoAIndex + 311];
+                    string thirtyTwoB = _contentList[thirtyTwoAIndex + 313];
+                    string thirtyTwoC = _contentList[thirtyTwoAIndex + 316];
+                    string thirtyTwoD = _contentList[thirtyTwoAIndex + 318];
+                    string thirtyTwoE = _contentList[thirtyTwoAIndex + 320];
+                    string thirtyTwoF = _contentList[thirtyTwoAIndex + 323];
+                    string thirtyThree = _contentList[thirtyTwoAIndex + 324];
+                    string thirtyFour = _contentList[thirtyTwoAIndex + 325];
 
-                    //var indexFarm = _contentList.FindIndex(m => m == "4. Farm Number") + 3;
-                    //int.TryParse(_contentList[indexFarm], out var FarmValue);
-
-                    //var indexFSAOffice = _contentList.FindIndex(m => m == "5A. County FSA Office Name and Address") + 1;
-                    //string FSAOfficeValue1 = _contentList[indexFSAOffice];
-                    //string FSAOfficeValue2 = _contentList[indexFSAOffice + 1];
-                    //string FSAOfficeValue3 = _contentList[indexFSAOffice + 2];
-                    //string FSAOfficeValue = string.Concat(FSAOfficeValue1, FSAOfficeValue2, FSAOfficeValue3);
-
-                    //var indexCountryOffice = _contentList.FindIndex(m => m == "5B. County Office Telephone No") + 4;
-                    //string CountryOfficeValue = _contentList[indexCountryOffice];
-
-                    //var indexCountryFax = _contentList.FindIndex(m => m == "5C. County Office Fax No") + 3;
-                    //string CountryFaxValue = _contentList[indexCountryFax];
-
-                    //var indexMultiYearContract = _contentList.FindIndex(m => m == "6.  Multi-year Contract ");
-                    ////string MultiYearContractValue = _contentList[indexMultiYearContract];
-                    //string MultiYearContractValue = string.Empty;
-
-                    //var indexOwnerProducer1 = _contentList.FindIndex(m => m == "12A. Owner or Producer's Name and Address") + 1;
-                    //string ownerProducerValue1 = _contentList[indexOwnerProducer1];
-                    //string ownerProducerValue2 = _contentList[indexOwnerProducer1 + 1];
-                    //string ownerProducerValue3 = _contentList[indexOwnerProducer1 + 2];
-                    //string ownerProducerValue = string.Concat(ownerProducerValue1, ownerProducerValue2, ownerProducerValue3);
-
-                    //var indexEmailId = _contentList.FindIndex(m => m == "12B. Email Address") + 1;
-                    ////string emailvalue = _contentList[indexEmailId];
-                    //string emailvalue = string.Empty;
-
-                    //var indexTelephoneNum = _contentList.FindIndex(m => m == "12C. Telephone No. ") + 1;
-                    ////string telePhoneNum= _contentList[indexTelephoneNum];
-                    //string telePhoneNum = string.Empty;
-
-                    ////For Comodity
-                    //var indexComodity = _contentList.FindIndex(m => m == "Commodity");
-                    //string cornValue = _contentList[indexComodity + 25];
-                    //string ricelongGrainValue = _contentList[indexComodity + 69];
-                    //string seedcottonValue = _contentList[indexComodity + 43];
-                    //string grainsorghumValue = _contentList[indexComodity + 68];
-                    //string soyabeansValue = _contentList[indexComodity + 71];
-                    //string wheatValue = _contentList[indexComodity + 74];
-
-                    ////For Program Elected
-                    //var indexProgElected = _contentList.FindIndex(m => m == "Elected");
-                    //string plcValue = _contentList[indexProgElected + 23];
-                    //string arcCountyValue = _contentList[indexProgElected + 37];
-
-                    ////Base Acres
-                    //var indexBaseAcres = _contentList.FindIndex(m => m == "Base Acres");
-                    //string value_643 = _contentList[indexBaseAcres + 22];
-                    //string value_336 = _contentList[indexBaseAcres + 32];
-                    //string value_1052 = _contentList[indexBaseAcres + 40];
-                    //string value_27 = _contentList[indexBaseAcres + 27];
-                    //string value_1853 = _contentList[indexBaseAcres + 36];
-                    //string value_387 = _contentList[indexBaseAcres + 44];
-
-                    ////PLC Yield
-                    //var indexPLCYield = _contentList.FindIndex(m => m == "PLC Yield");
-                    //string value_185 = _contentList[indexPLCYield + 21];
-                    //string value_6558 = _contentList[indexPLCYield + 31];
-                    //string value_2626 = _contentList[indexPLCYield + 39];
-                    //string value_59 = _contentList[indexPLCYield + 26];
-                    //string value_37 = _contentList[indexPLCYield + 35];
-                    //string value_40 = _contentList[indexPLCYield + 43];
-
-                    //var paymentshare = _contentList.FindIndex(m => m == "Payment Share");
-                    //string valuepaymentshare_8 = _contentList[paymentshare + 65];
-                    //string valuepaymentshare_100 = _contentList[paymentshare + 67];
-                    //string valuepaymentshare_empty = string.Empty;
-                    //string valuepaymentshare_15 = _contentList[paymentshare + 70];
-                    //string valuepaymentshare_90 = _contentList[paymentshare + 74];
 
                     //dumping data in excel file
                     Excel.Application xlApp = new Excel.Application();
@@ -129,106 +132,143 @@ namespace PDF_Demo.View
 
                     xlWorkBook = xlApp.Workbooks.Add(misValue);
                     xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                    xlWorkSheet.Cells[1, 1] = "1.Program_Year";
-                    xlWorkSheet.Cells[1, 2] = "2.State_Code";
-                    xlWorkSheet.Cells[1, 3] = "3.Country_Code";
-                    xlWorkSheet.Cells[1, 4] = "4.Fram_Number";
-                    xlWorkSheet.Cells[1, 5] = "5A.County FSA Office Name and Addres";
-                    xlWorkSheet.Cells[1, 6] = "5B.County Office Telephone No";
-                    xlWorkSheet.Cells[1, 7] = "5C.County Office Fax No";
-                    xlWorkSheet.Cells[1, 8] = "6.Multi-year Contract (2019 - 2023)";
+                    xlWorkSheet.Cells[1, 1] = "Proprietor";
+                    xlWorkSheet.Cells[1, 2] = "SSN";
+                    xlWorkSheet.Cells[1, 3] = "A_Principal_Crop";
+                    xlWorkSheet.Cells[1, 4] = "B_Code_from_PartIV";
+                    xlWorkSheet.Cells[1, 5] = "C_Acconting Method";
+                    xlWorkSheet.Cells[1, 6] = "D_EIN";
+                    xlWorkSheet.Cells[1, 7] = "E";
+                    xlWorkSheet.Cells[1, 8] = "F";
 
-                    xlWorkSheet.Cells[1, 9] = "7. Comodity";
-                    xlWorkSheet.Cells[1, 10] = "7.2 Comodity";
-                    xlWorkSheet.Cells[1, 11] = "7.3 Comodity";
-                    xlWorkSheet.Cells[1, 12] = "7.4 Comodity";
-                    xlWorkSheet.Cells[1, 13] = "7.5 Comodity";
-                    xlWorkSheet.Cells[1, 14] = "7.6 Comodity";
-                    xlWorkSheet.Cells[1, 15] = "8. Program Elected";
-                    xlWorkSheet.Cells[1, 16] = "8.2 Program Elected";
-                    xlWorkSheet.Cells[1, 17] = "8.3 Program Elected";
-                    xlWorkSheet.Cells[1, 18] = "8.4 Program Elected";
-                    xlWorkSheet.Cells[1, 19] = "8.5 Program Elected";
-                    xlWorkSheet.Cells[1, 20] = "8.6 Program Elected";
+                    xlWorkSheet.Cells[1, 9] = "G";
+                    xlWorkSheet.Cells[1, 10] = "1a";
+                    xlWorkSheet.Cells[1, 11] = "1b";
+                    xlWorkSheet.Cells[1, 12] = "1c";
+                    xlWorkSheet.Cells[1, 13] = "2";
+                    xlWorkSheet.Cells[1, 14] = "3a";
+                    xlWorkSheet.Cells[1, 15] = "3b";
+                    xlWorkSheet.Cells[1, 16] = "4a";
+                    xlWorkSheet.Cells[1, 17] = "4b";
+                    xlWorkSheet.Cells[1, 18] = "5a";
+                    xlWorkSheet.Cells[1, 19] = "5b";
+                    xlWorkSheet.Cells[1, 20] = "5c";
 
-                    xlWorkSheet.Cells[1, 21] = "9. Base Acres";
-                    xlWorkSheet.Cells[1, 22] = "9.2 Base Acres";
-                    xlWorkSheet.Cells[1, 23] = "9.3 Base Acres";
-                    xlWorkSheet.Cells[1, 24] = "9.4 Base Acres";
-                    xlWorkSheet.Cells[1, 25] = "9.5 Base Acres";
-                    xlWorkSheet.Cells[1, 26] = "9.6 Base Acres";
+                    xlWorkSheet.Cells[1, 21] = "6a";
+                    xlWorkSheet.Cells[1, 22] = "6b";
+                    xlWorkSheet.Cells[1, 23] = "6c";
+                    xlWorkSheet.Cells[1, 24] = "6d";
+                    xlWorkSheet.Cells[1, 25] = "7";
+                    xlWorkSheet.Cells[1, 26] = "8";
 
-                    xlWorkSheet.Cells[1, 27] = "10. PLC Yield";
-                    xlWorkSheet.Cells[1, 28] = "10.2 PLC Yield";
-                    xlWorkSheet.Cells[1, 29] = "10.3 PLC Yield";
-                    xlWorkSheet.Cells[1, 30] = "10.4 PLC Yield";
-                    xlWorkSheet.Cells[1, 31] = "10.5 PLC Yield";
-                    xlWorkSheet.Cells[1, 32] = "10.6 PLC Yield";
+                    xlWorkSheet.Cells[1, 27] = "9";
+                    xlWorkSheet.Cells[1, 28] = "10";
+                    xlWorkSheet.Cells[1, 29] = "11";
+                    xlWorkSheet.Cells[1, 30] = "12";
+                    xlWorkSheet.Cells[1, 31] = "13";
+                    xlWorkSheet.Cells[1, 32] = "14";
 
-                    xlWorkSheet.Cells[1, 33] = "12A.. Owner or Producer's Name and Address";
-                    xlWorkSheet.Cells[1, 34] = "12B. Email Address";
-                    xlWorkSheet.Cells[1, 35] = "12C. Telephone No";
+                    xlWorkSheet.Cells[1, 33] = "15";
+                    xlWorkSheet.Cells[1, 34] = "16";
+                    xlWorkSheet.Cells[1, 35] = "17";
 
-                    xlWorkSheet.Cells[1, 36] = "P2.14 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 37] = "P2.14.2 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 38] = "P2.14.3 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 39] = "P2.14.4 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 40] = "P2.14.5 PAYMENT SHARE";
-                    xlWorkSheet.Cells[1, 41] = "P2.14.6 PAYMENT SHARE";
+                    xlWorkSheet.Cells[1, 36] = "18";
+                    xlWorkSheet.Cells[1, 37] = "19";
+                    xlWorkSheet.Cells[1, 38] = "20";
+                    xlWorkSheet.Cells[1, 39] = "21a";
+                    xlWorkSheet.Cells[1, 40] = "21b";
+                    xlWorkSheet.Cells[1, 41] = "22";
+                    xlWorkSheet.Cells[1, 42] = "23";
+                    xlWorkSheet.Cells[1, 43] = "24a";
+                    xlWorkSheet.Cells[1, 44] = "24b";
+                    xlWorkSheet.Cells[1, 45] = "25";
+                    xlWorkSheet.Cells[1, 46] = "26";
+                    xlWorkSheet.Cells[1, 47] = "27";
+                    xlWorkSheet.Cells[1, 48] = "28";
+                    xlWorkSheet.Cells[1, 49] = "29";
+                    xlWorkSheet.Cells[1, 50] = "30";
+                    xlWorkSheet.Cells[1, 51] = "31";
+                    xlWorkSheet.Cells[1, 52] = "32a";
+                    xlWorkSheet.Cells[1, 53] = "32b";
+                    xlWorkSheet.Cells[1, 54] = "32c";
+                    xlWorkSheet.Cells[1, 55] = "32d";
+                    xlWorkSheet.Cells[1, 56] = "32e";
+                    xlWorkSheet.Cells[1, 57] = "32f";
+                    xlWorkSheet.Cells[1, 58] = "33";
+                    xlWorkSheet.Cells[1, 59] = "34";
+
                     //Filling on Cell
 
-                   // xlWorkSheet.Cells[2, 1] = ProgValue;
-                    //xlWorkSheet.Cells[2, 2] = StateValue;
-                    //xlWorkSheet.Cells[2, 3] = CountryValue;
-                    //xlWorkSheet.Cells[2, 4] = FarmValue;
-                    //xlWorkSheet.Cells[2, 5] = FSAOfficeValue;
-                    //xlWorkSheet.Cells[2, 6] = CountryOfficeValue;
-                    //xlWorkSheet.Cells[2, 7] = CountryFaxValue;
-                    //xlWorkSheet.Cells[2, 8] = MultiYearContractValue;
+                    xlWorkSheet.Cells[2, 1] = proprietorName;
+                    xlWorkSheet.Cells[2, 2] = _ssN;
+                    xlWorkSheet.Cells[2, 3] = PrincipalCrop;
+                    xlWorkSheet.Cells[2, 4] = CodefromPartIV;
+                    xlWorkSheet.Cells[2, 5] = AccontingMethod;
+                    xlWorkSheet.Cells[2, 6] = _EIN;
+                    xlWorkSheet.Cells[2, 7] = E;
+                    xlWorkSheet.Cells[2, 8] = F;
 
-                    ////Comodity value in excel
-                    //xlWorkSheet.Cells[2, 9] = cornValue;
-                    //xlWorkSheet.Cells[2, 10] = ricelongGrainValue;
-                    //xlWorkSheet.Cells[2, 11] = seedcottonValue;
-                    //xlWorkSheet.Cells[2, 12] = grainsorghumValue;
-                    //xlWorkSheet.Cells[2, 13] = soyabeansValue;
-                    //xlWorkSheet.Cells[2, 14] = wheatValue;
+                    //Comodity value in excel
+                    xlWorkSheet.Cells[2, 9] = G;
+                    xlWorkSheet.Cells[2, 10] = OneA;
+                    xlWorkSheet.Cells[2, 11] = OneB;
+                    xlWorkSheet.Cells[2, 12] = OneC;
+                    xlWorkSheet.Cells[2, 13] = two;
+                    xlWorkSheet.Cells[2, 14] = threeA;
 
-                    ////Program Elected
-                    //xlWorkSheet.Cells[2, 15] = plcValue;
-                    //xlWorkSheet.Cells[2, 16] = plcValue;
-                    //xlWorkSheet.Cells[2, 17] = plcValue;
-                    //xlWorkSheet.Cells[2, 18] = plcValue;
-                    //xlWorkSheet.Cells[2, 19] = arcCountyValue;
-                    //xlWorkSheet.Cells[2, 20] = plcValue;
-                    ////Base Acres
-                    //xlWorkSheet.Cells[2, 21] = value_643;
-                    //xlWorkSheet.Cells[2, 22] = value_336;
-                    //xlWorkSheet.Cells[2, 23] = value_1052;
-                    //xlWorkSheet.Cells[2, 24] = value_27;
-                    //xlWorkSheet.Cells[2, 25] = value_1853;
-                    //xlWorkSheet.Cells[2, 26] = value_387;
+                    //Program Elected
+                    xlWorkSheet.Cells[2, 15] = threeB;
+                    xlWorkSheet.Cells[2, 16] = fourA;
+                    xlWorkSheet.Cells[2, 17] = fourB;
+                    xlWorkSheet.Cells[2, 18] = fiveA;
+                    xlWorkSheet.Cells[2, 19] = fiveB;
+                    xlWorkSheet.Cells[2, 20] = fiveC;
+                    //Base Acres
+                    xlWorkSheet.Cells[2, 21] = sixA;
+                    xlWorkSheet.Cells[2, 22] = sixB;
+                    xlWorkSheet.Cells[2, 23] = sixC;
+                    xlWorkSheet.Cells[2, 24] = sixD;
+                    xlWorkSheet.Cells[2, 25] = seven;
+                    xlWorkSheet.Cells[2, 26] = eight;
 
-                    ////PLC Yield
-                    //xlWorkSheet.Cells[2, 27] = value_185;
-                    //xlWorkSheet.Cells[2, 28] = value_6558;
-                    //xlWorkSheet.Cells[2, 29] = value_2626;
-                    //xlWorkSheet.Cells[2, 30] = value_59;
-                    //xlWorkSheet.Cells[2, 31] = value_37;
-                    //xlWorkSheet.Cells[2, 32] = value_40;
+                    //PLC Yield
+                    xlWorkSheet.Cells[2, 27] = nine;
+                    xlWorkSheet.Cells[2, 28] = ten;
+                    xlWorkSheet.Cells[2, 29] = eleven;
+                    xlWorkSheet.Cells[2, 30] = twelve;
+                    xlWorkSheet.Cells[2, 31] = thirteen;
+                    xlWorkSheet.Cells[2, 32] = fourteen;
 
-                    //xlWorkSheet.Cells[2, 33] = ownerProducerValue;
-                    //xlWorkSheet.Cells[2, 34] = emailvalue;
-                    //xlWorkSheet.Cells[2, 35] = telePhoneNum;
+                    xlWorkSheet.Cells[2, 33] = fiveteen;
+                    xlWorkSheet.Cells[2, 34] = sixteen;
+                    xlWorkSheet.Cells[2, 35] = seventeen;
 
-                    //xlWorkSheet.Cells[2, 36] = valuepaymentshare_8;
-                    //xlWorkSheet.Cells[2, 37] = valuepaymentshare_empty;
-                    //xlWorkSheet.Cells[2, 38] = valuepaymentshare_100;
-                    //xlWorkSheet.Cells[2, 39] = valuepaymentshare_100;
-                    //xlWorkSheet.Cells[2, 40] = valuepaymentshare_15;
-                    //xlWorkSheet.Cells[2, 41] = valuepaymentshare_90;
+                    xlWorkSheet.Cells[2, 36] = eighteen;
+                    xlWorkSheet.Cells[2, 37] = ninteen;
+                    xlWorkSheet.Cells[2, 38] = twenty;
+                    xlWorkSheet.Cells[2, 39] = twentyOneA;
+                    xlWorkSheet.Cells[2, 40] = twentyOneB;
+                    xlWorkSheet.Cells[2, 41] = twentyTwo;
+                    xlWorkSheet.Cells[2, 42] = twentyThree;
+                    xlWorkSheet.Cells[2, 43] = twentyFourA;
+                    xlWorkSheet.Cells[2, 44] = twentyFourB;
+                    xlWorkSheet.Cells[2, 45] = twentyFive;
+                    xlWorkSheet.Cells[2, 46] = twentySix;
+                    xlWorkSheet.Cells[2, 47] = twentySeven;
+                    xlWorkSheet.Cells[2, 48] = twentyEight;
+                    xlWorkSheet.Cells[2, 49] = twentyNine;
+                    xlWorkSheet.Cells[2, 50] = thirty;
+                    xlWorkSheet.Cells[2, 51] = thirtyOne;
+                    xlWorkSheet.Cells[2, 52] = thirtyTwoA;
+                    xlWorkSheet.Cells[2, 53] = thirtyTwoB;
+                    xlWorkSheet.Cells[2, 54] = thirtyTwoC;
+                    xlWorkSheet.Cells[2, 55] = thirtyTwoD;
+                    xlWorkSheet.Cells[2, 56] = thirtyTwoE;
+                    xlWorkSheet.Cells[2, 57] = thirtyTwoF;
+                    xlWorkSheet.Cells[2, 58] = thirtyThree;
+                    xlWorkSheet.Cells[2, 59] = thirtyFour;
 
-                    xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.SaveAs(@"C:\ScheduleExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
 
@@ -242,8 +282,8 @@ namespace PDF_Demo.View
             {
                 Response.Write("Please select file to upload");
             }
-
         }
+
         private void Extract(ContentScanner level)
         {
             if (level == null)
@@ -279,6 +319,6 @@ namespace PDF_Demo.View
             }
         }
 
-        
+
     }
 }
