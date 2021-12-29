@@ -5,14 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="../css/Mycss.css" rel="stylesheet" />
 </head>
 <body>
      <form id="form1" runat="server">
-        <div style="margin-left:300px;"> 
+        <div class="page-allignment"> 
+        <fieldset>
+        <legend>  <b>Schedule Pdf File</b></legend>
             <asp:FileUpload ID="FileUpload1" runat="server" /> <br /> <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Click Here upload pdf file" />
-        </div>
-       
+        </fieldset>
+       </div>
     </form>
 </body>
 </html>
