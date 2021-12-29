@@ -6,6 +6,7 @@ using PDF_Demo.Helper;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Web.UI;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PDF_Demo.View
@@ -20,6 +21,10 @@ namespace PDF_Demo.View
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string excelFileName = txtFileName.Text;
+            string excelFilePath = txtFilePath.Text;
+            string path = string.Concat(excelFilePath, excelFileName);
+
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
             {
@@ -409,19 +414,19 @@ namespace PDF_Demo.View
                     //xlWorkSheet.Cells[2, 85] = Relationship_of_the_Individual_Signing_in_the_Representative_Capacity;
                     //xlWorkSheet.Cells[2, 86] = Date_MM_DD_YYYY;
 
-                    xlWorkBook.SaveAs(@"C:\PDFExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.SaveAs(excelFilePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
 
                     Marshal.ReleaseComObject(xlWorkSheet);
                     Marshal.ReleaseComObject(xlWorkBook);
                     Marshal.ReleaseComObject(xlApp);
-                    Response.Write("Excel file created in c drive");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "myconfirm", "confirm('Excel file created in c drive');", true);
                 }
             }
             else
             {
-                Response.Write("Please select file to upload");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "myconfirm", "confirm('Please select file to upload');", true);
             }
 
         }

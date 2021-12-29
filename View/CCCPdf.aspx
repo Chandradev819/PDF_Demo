@@ -34,7 +34,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td> <asp:Button ID="Button1" runat="server" ValidationGroup="CCCFrame" OnClick="Button1_Click" Text="Upload" /></td>
+                    <td> </td>
+                    <td><asp:Button ID="Button1" runat="server" ValidationGroup="CCCFrame" OnClick="Button1_Click" Text="Upload" /></td>
                 </tr>
             </table>
         </fieldset>
