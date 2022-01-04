@@ -20,9 +20,6 @@ namespace PDF_Demo.View
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string excelFileName = txtFileName.Text;
-            string excelFilePath = txtFilePath.Text;
-            string path = string.Concat(excelFilePath, excelFileName);
             string blank = "";
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
@@ -271,7 +268,7 @@ namespace PDF_Demo.View
                     xlWorkSheet.Cells[2, 58] = thirtyThree;
                     xlWorkSheet.Cells[2, 59] = thirtyFour;
 
-                    xlWorkBook.SaveAs(excelFilePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.SaveAs(@"C:\Users\chandradev_ps\Desktop\Input\ExcelOutput.xlsx", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
 

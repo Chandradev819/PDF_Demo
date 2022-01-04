@@ -6,7 +6,6 @@ using PDF_Demo.Helper;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Web.UI;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PDF_Demo.View
@@ -21,11 +20,6 @@ namespace PDF_Demo.View
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string excelFileName = txtFileName.Text;
-            string excelFilePath = txtFilePath.Text;
-            string path = string.Concat(excelFilePath, excelFileName);
-
-            PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (FileUpload1.HasFile)
             {
                 string extension = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
@@ -33,6 +27,7 @@ namespace PDF_Demo.View
                 {
                     string fileName = System.IO.Path.Combine(Server.MapPath("~/Pdf"), FileUpload1.FileName);
                     FileUpload1.SaveAs(fileName);
+
                     _contentList = new List<string>();
                     CreatePdfContent(fileName);
                     var indexProg = _contentList.FindIndex(m => m == "1. Program Year: ") + 1;
@@ -414,19 +409,21 @@ namespace PDF_Demo.View
                     //xlWorkSheet.Cells[2, 85] = Relationship_of_the_Individual_Signing_in_the_Representative_Capacity;
                     //xlWorkSheet.Cells[2, 86] = Date_MM_DD_YYYY;
 
-                    xlWorkBook.SaveAs(excelFilePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.SaveAs(@"C:\Users\chandradev_ps\Desktop\Input\ExcelOutput.xlsx", 
+                        Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, 
+                        Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
 
                     Marshal.ReleaseComObject(xlWorkSheet);
                     Marshal.ReleaseComObject(xlWorkBook);
                     Marshal.ReleaseComObject(xlApp);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "myconfirm", "confirm('Excel file created in c drive');", true);
+                    Response.Write("Excel file created in c drive");
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "myconfirm", "confirm('Please select file to upload');", true);
+                Response.Write("Please select file to upload");
             }
 
         }
