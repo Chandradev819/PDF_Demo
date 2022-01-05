@@ -5,7 +5,26 @@
 <html>
 <head runat="server">
     <title></title>
-    <link href="css/Mycss.css" rel="stylesheet" />
+    <link href="css/Mycss.css" rel="stylesheet" />   
+     <style type="text/css">
+        #dropOnMe {
+            width: 550px;
+            height: 250px;
+            padding: 10px;
+            border: 2px dashed gray;
+            background-color: lightgray;
+            color:black;
+        }
+        #dropOnMe1 {
+            width: 550px;
+            height: 250px;
+            padding: 10px;
+            border: 2px dashed gray;
+            background-color: lightgray;
+             color:black;
+        }
+    </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -33,5 +52,6 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+      
 </body>
 </html>
