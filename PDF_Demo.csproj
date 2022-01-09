@@ -99,6 +99,9 @@
     <Compile Include="Services\PdfReaderServiceType2.ashx.cs">
       <DependentUpon>PdfReaderServiceType2.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Services\UtilityHandler.ashx.cs">
+      <DependentUpon>UtilityHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="View\CCCPdf.aspx.cs">
       <DependentUpon>CCCPdf.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,6 +131,7 @@
     <Content Include="SampleInput\Schedule_F_TestData.pdf" />
     <Content Include="Services\PdfReaderServiceType1.ashx" />
     <Content Include="Services\PdfReaderServiceType2.ashx" />
+    <Content Include="Services\UtilityHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

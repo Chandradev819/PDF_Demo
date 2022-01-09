@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using org.pdfclown.documents;
+﻿using org.pdfclown.documents;
 using org.pdfclown.documents.contents;
 using org.pdfclown.documents.contents.objects;
 using org.pdfclown.files;
 using PDF_Demo.Helper;
+using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 using System.Threading;
+using System.Web;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PDF_Demo.Service
 {
@@ -22,7 +21,7 @@ namespace PDF_Demo.Service
         private List<string> _contentList;
         public void ProcessRequest(HttpContext context)
         {
-            //string path = GetFilePath();
+            string path = GetFilePath();
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (context.Request.Files.Count > 0)
             {
@@ -418,17 +417,28 @@ namespace PDF_Demo.Service
                         //xlWorkSheet.Cells[2, 84] = Producer_Signature_By;
                         //xlWorkSheet.Cells[2, 85] = Relationship_of_the_Individual_Signing_in_the_Representative_Capacity;
                         //xlWorkSheet.Cells[2, 86] = Date_MM_DD_YYYY;
+                        try
+                        {
+                            xlWorkBook.SaveAs(path + "\\CCC866_3025.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                            xlWorkBook.Close(true, misValue, misValue);
+                            xlApp.Quit();
 
-                        xlWorkBook.SaveAs(@"C:\Users\chandradev_ps\Desktop\Input\ExcelOutput.xlsx",
-                       Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue,
-                       Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        xlWorkBook.Close(true, misValue, misValue);
-                        xlApp.Quit();
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(xlApp);
+                        }
+                        catch (Exception)
+                        {
 
-                        Marshal.ReleaseComObject(xlWorkSheet);
-                        Marshal.ReleaseComObject(xlWorkBook);
-                        Marshal.ReleaseComObject(xlApp);
-                        context.Response.Write("Excel file created in c drive");
+                            xlWorkBook.Close(true, misValue, misValue);
+                            xlApp.Quit();
+
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(xlApp);
+                        }
+
+                        context.Response.Write("Excel file is created");
                     }
                 }
             }
@@ -485,7 +495,8 @@ namespace PDF_Demo.Service
         {
             string selectedPath = "";
 
-            Thread t = new Thread((ThreadStart)(() => {
+            Thread t = new Thread((ThreadStart)(() =>
+            {
                 FolderBrowserDialog folderDialog = new FolderBrowserDialog();
                 folderDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
                 folderDialog.ShowNewFolderButton = true;
@@ -497,7 +508,7 @@ namespace PDF_Demo.Service
 
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
-            t.Join();
+            t.Join(1);
             Console.WriteLine(selectedPath);
             return selectedPath;
 

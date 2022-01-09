@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using org.pdfclown.documents;
+﻿using org.pdfclown.documents;
 using org.pdfclown.documents.contents;
 using org.pdfclown.documents.contents.objects;
 using org.pdfclown.files;
 using PDF_Demo.Helper;
+using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
 using System.Threading;
+using System.Web;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PDF_Demo.Service
 {
@@ -22,7 +21,7 @@ namespace PDF_Demo.Service
         private List<string> _contentList;
         public void ProcessRequest(HttpContext context)
         {
-           // string path = GetFilePath();
+            string path = GetFilePath();
             string blank = "";
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (context.Request.Files.Count > 0)
@@ -35,6 +34,7 @@ namespace PDF_Demo.Service
                     string extension = System.IO.Path.GetExtension(fileName);
                     if (extension == ".pdf")
                     {
+
                         fileName = context.Server.MapPath("~/Pdf/" + fileName);
                         // string fileName = System.IO.Path.Combine(context.Server.MapPath("~/Pdf"), fileName);
                         file.SaveAs(fileName);
@@ -277,18 +277,26 @@ namespace PDF_Demo.Service
                         xlWorkSheet.Cells[2, 58] = thirtyThree;
                         xlWorkSheet.Cells[2, 59] = thirtyFour;
 
-                        xlWorkBook.SaveAs(@"C:\Users\chandradev_ps\Desktop\Input\SchecduleExcelOutput.xlsx", 
-                            Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, 
-                            Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, 
-                            misValue);
-                        xlWorkBook.Close(true, misValue, misValue);
-                        xlApp.Quit();
+                        try
+                        {
+                            xlWorkBook.SaveAs(path + "\\Schedule.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                            xlWorkBook.Close(true, misValue, misValue);
+                            xlApp.Quit();
 
-                        Marshal.ReleaseComObject(xlWorkSheet);
-                        Marshal.ReleaseComObject(xlWorkBook);
-                        Marshal.ReleaseComObject(xlApp);
-                        //context.Response.ContentType = "text/plain";
-                        //context.Response.Write("Excel file created in c drive");
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(xlApp);
+                        }
+                        catch (Exception)
+                        {
+
+                            xlWorkBook.Close(true, misValue, misValue);
+                            xlApp.Quit();
+
+                            Marshal.ReleaseComObject(xlWorkSheet);
+                            Marshal.ReleaseComObject(xlWorkBook);
+                            Marshal.ReleaseComObject(xlApp);
+                        }
                     }
 
                     else
@@ -298,18 +306,21 @@ namespace PDF_Demo.Service
                 }
 
                 context.Response.ContentType = "text/plain";
-                context.Response.Write("Excel file created");
+                context.Response.Write("Excel file is created");
 
                 //context.Response.ContentType = "text/plain";
                 //context.Response.Write("File(s) uploaded successfully!");
             }
+
         }
+
 
         public string GetFilePath()
         {
             string selectedPath = "";
 
-            Thread t = new Thread((ThreadStart)(() => {
+            Thread t = new Thread((ThreadStart)(() =>
+            {
                 FolderBrowserDialog folderDialog = new FolderBrowserDialog();
                 folderDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
                 folderDialog.ShowNewFolderButton = true;
@@ -321,7 +332,7 @@ namespace PDF_Demo.Service
 
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
-            t.Join();
+            t.Join(1);
             Console.WriteLine(selectedPath);
             return selectedPath;
 
