@@ -23,6 +23,7 @@ namespace PDF_Demo.Service
         {
             string path = GetFilePath();
             string blank = "";
+            string excelFileName = string.Empty;
             PdfTextExtractor pdfTextExtractor = new PdfTextExtractor();
             if (context.Request.Files.Count > 0)
             {
@@ -31,12 +32,12 @@ namespace PDF_Demo.Service
                 {
                     HttpPostedFile file = files[key];
                     string fileName = file.FileName;
+                    excelFileName = fileName.Replace(".pdf", "");
                     string extension = System.IO.Path.GetExtension(fileName);
                     if (extension == ".pdf")
                     {
 
                         fileName = context.Server.MapPath("~/Pdf/" + fileName);
-                        // string fileName = System.IO.Path.Combine(context.Server.MapPath("~/Pdf"), fileName);
                         file.SaveAs(fileName);
                         _contentList = new List<string>();
                         CreatePdfContent(fileName);
@@ -279,7 +280,7 @@ namespace PDF_Demo.Service
 
                         try
                         {
-                            xlWorkBook.SaveAs(path + "\\Schedule.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                            xlWorkBook.SaveAs(path + "\\" + excelFileName + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                             xlWorkBook.Close(true, misValue, misValue);
                             xlApp.Quit();
 

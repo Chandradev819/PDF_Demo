@@ -19,6 +19,7 @@ namespace PDF_Demo.Service
     public class PdfReaderServiceType1 : IHttpHandler
     {
         private List<string> _contentList;
+        string excelFileName = string.Empty;
         public void ProcessRequest(HttpContext context)
         {
             string path = GetFilePath();
@@ -30,8 +31,8 @@ namespace PDF_Demo.Service
                 {
                     HttpPostedFile file = files[key];
                     string fileName = file.FileName;
+                    excelFileName = fileName.Replace(".pdf", "");
                     string extension = System.IO.Path.GetExtension(fileName);
-
 
                     if (extension == ".pdf")
                     {
@@ -419,7 +420,7 @@ namespace PDF_Demo.Service
                         //xlWorkSheet.Cells[2, 86] = Date_MM_DD_YYYY;
                         try
                         {
-                            xlWorkBook.SaveAs(path + "\\CCC866_3025.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                            xlWorkBook.SaveAs(path + "\\" +excelFileName+ ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                             xlWorkBook.Close(true, misValue, misValue);
                             xlApp.Quit();
 
