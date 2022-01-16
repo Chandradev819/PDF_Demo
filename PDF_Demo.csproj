@@ -123,9 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="SampleInput\Notes_1030_2021.docx" />
-    <Content Include="SampleInput\Schedule_f.xlsx" />
-    <Content Include="SampleInput\Schedule_F_TestData.pdf" />
     <Content Include="Services\PdfReaderServiceType1.ashx" />
     <Content Include="Services\PdfReaderServiceType2.ashx" />
     <None Include="Web.Debug.config">
@@ -139,7 +136,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Pdf\" />
-    <Folder Include="SampleFile\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -35,28 +35,12 @@
         </fieldset>
     </div>
 
-
     <script>
-        function openPage(pageName, elmnt, color) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-            document.getElementById(pageName).style.display = "block";
-            elmnt.style.backgroundColor = color;
-        }
-
         /* Code for file upload */
         $(document).ready(function () {
             if (typeof (window.FileReader) == 'undefined') {
                 alert('Browser does not support HTML5 file uploads!');
             }
-
 
             /* Code for file upload 1 */
             dropOnMe1.addEventListener("drop", dropHandler1, false);
@@ -110,9 +94,6 @@
                 ev.preventDefault();
             }, false);
         });
-
-
-
     </script>
     <script type="text/javascript">
         $("body").on("click", "#btnUpload", function () {
@@ -135,6 +116,4 @@
             });
         });
     </script>
-
-
 </asp:Content>
